@@ -3,7 +3,6 @@
   stat:
     path: variables/config.yml
   register: declaration
-  when: config is undefined
 
 - name: Ensure config is is created
   block:
@@ -21,4 +20,4 @@
       template:
         src: templates/config.py.j2
         dest: "{{ output.path }}/{{ output.directories.utils }}/config.py"
-  when: config is undefined and declaration.stat.exists
+  when: declaration.stat.exists
