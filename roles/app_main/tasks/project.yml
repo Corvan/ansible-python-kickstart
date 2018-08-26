@@ -1,0 +1,21 @@
+---
+- name: Ensure application variables are loaded
+  include_vars: "{{ item }}"
+  with_first_found:
+    - variables/application.yml
+
+- name: look for config definition
+  stat:
+    path: variables/config.yml
+  register: declaration
+
+- name: Ensure config variables are loaded
+  include_vars: "{{ item }}"
+  with_first_found:
+  - variables/config.yml
+  when: declaration.stat.exists
+
+- name: Ensure main is created
+  template:
+    src: templates/main.py.j2
+    dest: "{{ output.path }}/{{ application.name }}.py"
