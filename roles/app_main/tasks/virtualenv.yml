@@ -1,18 +1,18 @@
 ---
 - name: Look for requirements file
   stat:
-    path: "{{ playbook_dir }}/requirements.txt"
+    path: "{{ output.path }}/requirements.txt"
   register: requirements_file
 
 - name: Ensure Python requirements are met
   pip:
-    chdir: "{{ playbook_dir }}"
+    chdir: "{{ output.path }}"
     requirements: requirements.txt
   when: requirements_file.stat.exists and application.virtualenv is undefined
 
 - name: Ensure virtualenv is created
   pip:
-    chdir: "{{ playbook_dir }}"
+    chdir: "{{ output.path }}"
     requirements: requirements.txt
     virtualenv: "{{ output.path }}/venv"
     virtualenv_command: /usr/local/bin/virtualenv

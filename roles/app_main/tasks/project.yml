@@ -19,3 +19,8 @@
   template:
     src: templates/main.py.j2
     dest: "{{ output.path }}/{{ application.name }}.py"
+
+- name: Ensure requirements file is created
+  template:
+    src: templates/requirements.txt.j2
+    dest: "{{ output.path }}/requirements.txt"
