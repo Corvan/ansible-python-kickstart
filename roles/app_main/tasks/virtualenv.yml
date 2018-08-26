@@ -8,7 +8,7 @@
   pip:
     chdir: "{{ output.path }}"
     requirements: requirements.txt
-  when: requirements_file.stat.exists and application.virtualenv is undefined
+  when:  application.virtualenv is undefined and requirements_file.stat.exists
 
 - name: Ensure virtualenv is created
   pip:
