@@ -1,0 +1,29 @@
+from argparse import ArgumentParser
+{%  if config is defined %}
+from utils import Config
+{% endif %}
+
+
+class {{ application.name|capitalize}}:
+    def __init__(self):
+        argument_parser = ArgumentParser("description={{ application.description }}")
+    {% if config is defined %}
+    argument_parser.add_argument("-c", "--config", "path to the configfile, " \
+                                     "default is /usr/local/etc/{{ application.name }}/config.ini",
+                                     default="/usr/local/etc/{{ application.name }}/config.ini")
+    {% endif %}
+    {% if logging is defined %}
+    argument_parser.add_argument("-l", "--logging", "path to logfile"
+    {% endif %}
+self.args = argument_parser.parse_args()
+    {% if config is defined %}
+    self.config = Config(self.args.config)
+    {% endif %}
+
+    def run(self):
+        pass
+
+
+if __name__ == "__main__":
+    {{ application.name }} = {{ application.name|capitalize }}()
+    {{ application.name }}.run()

@@ -1,0 +1,6 @@
+---
+- task:
+  name: Ensure main is created
+  template:
+    src: templates/main.py.j2
+    dest: "{{ output.path }}/{{ application.name }}.py"

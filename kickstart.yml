@@ -6,3 +6,4 @@
   roles:
     - cmp_utils
     - utils_config
+    - app_main
