@@ -1,7 +1,7 @@
 ---
 - name: look for config definition
   stat:
-    path: config.yml
+    path: variables/config.yml
   register: declaration
   when: config is undefined
 
@@ -10,7 +10,7 @@
     - name: Load config variables
       include_vars: "{{ item }}"
       with_first_found:
-        - config.yml
+        - variables/config.yml
 
     - name: Ensure config file is created
       template:
