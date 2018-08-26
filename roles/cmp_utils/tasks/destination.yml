@@ -3,7 +3,7 @@
     path: "{{ output.path }}/{{ output.directories.utils }}"
     state: directory
 
-- name: Ensure utils directiry is a Python package
+- name: Ensure utils directory is a Python package
   template:
     src: templates/__init__.py.j2
     dest: "{{ output.path }}/{{ output.directories.utils }}/__init__.py"
