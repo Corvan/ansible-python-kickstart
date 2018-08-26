@@ -7,8 +7,10 @@ config:
       attributes:
         - name: test1
           type: str
+          value: hello
         - name: test2
           type: int
+          value: 2
     - name: second
       attributes:
         - name: test1
