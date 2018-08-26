@@ -3,7 +3,6 @@
   stat:
     path: variables/config.yml
   register: declaration
-  when: config is undefined
 
 - name: Ensure config is is created
   block:
