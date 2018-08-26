@@ -1,8 +1,9 @@
 ---
 - name: look for config definition
   stat:
-    path: "{{ playbook_dir }}/roles/utils_config/vars/config.yml"
+    path: config.yml
   register: declaration
+  when: config is undefined
 
 - name: Ensure config is is created
   block:
