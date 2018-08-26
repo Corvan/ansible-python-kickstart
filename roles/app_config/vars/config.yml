@@ -1,0 +1,15 @@
+---
+config:
+  file:
+    name: test.conf
+  sections:
+    - name: first
+      attributes:
+        - name: test1
+          type: str
+        - name: test2
+          type: int
+    - name: second
+      attributes:
+        - name: test1
+        - name: test3

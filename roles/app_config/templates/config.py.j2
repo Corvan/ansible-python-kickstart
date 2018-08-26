@@ -1,0 +1,46 @@
+from __future__ import annotations
+from configparser import ConfigParser
+
+
+class Config:
+
+    def __init__(self, path: str):
+        self.__parser = ConfigParser()
+        self.__parser.read(path)
+    {% for section in config.sections %}
+    self.__{{ section.name }} = {{ section.name|capitalize }}(self.__parser)
+    {% endfor %}
+
+{% for section in config.sections %}
+    @property
+    def {{ section.name }}(self) -> {{ section.name|capitalize }}:
+        return self.__{{ section.name }}
+
+{% endfor %}
+
+{%  for section in config.sections %}
+class {{ section.name|capitalize }}:
+
+    def __init__(self, parser: ConfigParser):
+        self.__parser = parser
+    {% for attribute in section.attributes %}
+    self.__{{ attribute.name }}{% if attribute.type is defined %}: {{ attribute.type }}{% endif %} = None
+    {% endfor %}
+
+{% for attribute in section.attributes %}
+    @property
+    def {{ attribute.name }}(self):
+        if self.__{{ attribute.name }} is None:
+            self.__{{ attribute.name }} = self.__parser.get("{{ section.name }}", "{{ attribute.name }}")
+        return self.__{{ attribute.name }}
+
+{% endfor %}
+
+{% endfor %}
+if __name__ == '__main__':
+    config = Config('{{ config.file.name }}')
+{% for section in config.sections %}
+{% for attribute in section.attributes %}
+    print(config.{{ section.name }}.{{ attribute.name }})
+{% endfor %}
+{% endfor %}

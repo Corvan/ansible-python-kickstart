@@ -1,0 +1,8 @@
+---
+- name: Project Kickstarter
+  hosts: hosts
+  connection: local
+  gather_facts: False
+  roles:
+    - cmp_utils
+    - app_config

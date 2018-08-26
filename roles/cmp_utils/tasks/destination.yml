@@ -1,0 +1,9 @@
+- name: Ensure utils directory exists
+  file:
+    path: "{{ output.path }}/{{ output.utils }}"
+    state: directory
+
+- name: Ensure utils directiry is a Python package
+  template:
+    src: templates/__init__.py.j2
+    dest: "{{ output.path }}/{{ output.utils }}/__init__.py"

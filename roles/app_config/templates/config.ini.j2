@@ -1,0 +1,7 @@
+{% for section in config.sections %}
+[{{ section.name }}]
+{% for attribute in section.attributes %}
+{{ attribute.name }}=
+{% endfor %}
+
+{% endfor %}

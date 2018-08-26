@@ -1,0 +1,15 @@
+---
+- name: Load config variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - config.yml
+
+- name: Ensure config file is created
+  template:
+    src: templates/config.ini.j2
+    dest: "{{ output.path }}/{{ config.file.name }}"
+
+- name: Ensure config class is created
+  template:
+    src: templates/config.py.j2
+    dest: "{{ output.path }}/{{ output.utils }}/config.py"
