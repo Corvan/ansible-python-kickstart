@@ -1,7 +1,9 @@
+
 {% for section in config.sections %}
 [{{ section.name }}]
 {% for attribute in section.attributes %}
-{{ attribute.name }}=
+{{ attribute.name }} = {% if attribute.value is defined %}{{ attribute.value }}{% endif %}
+
 {% endfor %}
 
 {% endfor %}
