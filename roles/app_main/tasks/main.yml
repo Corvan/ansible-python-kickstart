@@ -1,1 +1,2 @@
 - include_tasks: project.yml
+- include_tasks: virtualenv.yml

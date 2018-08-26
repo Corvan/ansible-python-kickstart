@@ -2,6 +2,7 @@
 application:
   name: test
   description: this is an application for testing kickstart
+  virtualenv: True
 
 output:
   path: ~/PycharmProjects/kickstart_output
