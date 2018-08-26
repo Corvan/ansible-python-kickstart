@@ -41,6 +41,6 @@ if __name__ == '__main__':
     config = Config('../{{ config.file.name }}')
 {% for section in config.sections %}
 {% for attribute in section.attributes %}
-    print(config.{{ section.name }}.{{ attribute.name }})
+    print("{{ section.name }}, {{ attribute.name }}: {}".format(config.{{ section.name }}.{{ attribute.name }}))
 {% endfor %}
 {% endfor %}
