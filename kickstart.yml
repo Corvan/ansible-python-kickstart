@@ -5,4 +5,4 @@
   gather_facts: False
   roles:
     - cmp_utils
-    - app_config
+    - utils_config
