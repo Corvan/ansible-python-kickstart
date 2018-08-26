@@ -1,4 +1,8 @@
 ---
+application:
+  name: test
+  description: this is an application for testing kickstart
+
 output:
   path: ~/PycharmProjects/kickstart_output
   directories:
