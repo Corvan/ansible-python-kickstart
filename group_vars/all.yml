@@ -1,4 +1,5 @@
 ---
 output:
   path: ~/PycharmProjects/kickstart_output
-  utils: utils
+  directories:
+    utils: utils

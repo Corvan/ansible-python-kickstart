@@ -19,5 +19,5 @@
     - name: Ensure config class is created
       template:
         src: templates/config.py.j2
-        dest: "{{ output.path }}/{{ output.utils }}/config.py"
+        dest: "{{ output.path }}/{{ output.directories.utils }}/config.py"
   when: declaration.stat.exists
