@@ -8,7 +8,7 @@ class {{ application.name|capitalize}}:
     def __init__(self):
         argument_parser = ArgumentParser("description={{ application.description }}")
     {% if config is defined %}
-    argument_parser.add_argument("-c", "--config", "path to the configfile, " \
+    argument_parser.add_argument("-c", "--config", "path to the configfile, "
                                      "default is /usr/local/etc/{{ application.name }}/config.ini",
                                      default="/usr/local/etc/{{ application.name }}/config.ini")
     {% endif %}
