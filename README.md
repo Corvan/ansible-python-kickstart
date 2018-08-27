@@ -1,2 +1,2 @@
 # ansible-python-kickstart
-Kcikstart a Python project with Ansible
+Kickstart a Python project with Ansible
