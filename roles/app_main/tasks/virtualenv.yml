@@ -10,6 +10,11 @@
     requirements: requirements.txt
   when:  application.virtualenv is undefined and requirements_file.stat.exists
 
+- name: Ensure virtualenv folder is present
+  file:
+    path: "{{ output.path }}/venv"
+    state: directory
+
 - name: Ensure virtualenv is created
   pip:
     chdir: "{{ output.path }}"
