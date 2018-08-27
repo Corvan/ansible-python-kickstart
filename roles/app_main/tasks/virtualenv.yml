@@ -20,6 +20,5 @@
     chdir: "{{ output.path }}"
     requirements: requirements.txt
     virtualenv: "{{ output.path }}/venv"
-    virtualenv_command: /usr/local/bin/virtualenv
     virtualenv_python: python3.7
   when: application.virtualenv is defined and requirements_file.stat.exists
